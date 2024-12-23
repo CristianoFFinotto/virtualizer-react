@@ -7,6 +7,7 @@ export interface HandleIntersectionParams
 
 export interface VirtualizerProps extends HTMLAttributes<HTMLDivElement> {
   data: { id: string; item: ReactNode }[];
+  threshold?: number;
   onTopReached: () => void;
   onEndReached: () => void;
 }

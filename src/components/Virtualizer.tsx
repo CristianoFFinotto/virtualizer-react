@@ -1,16 +1,17 @@
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment, useEffect, useLayoutEffect, useRef } from "react";
 import { VirtualizerProps } from "../types/types";
 import { handleIntersection } from "../utils/helpers";
 
 export const Virtualizer = ({
   data,
+  threshold = 1.0,
   onTopReached,
   onEndReached,
   ...restDivProps
 }: VirtualizerProps) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!parentRef.current) {
       return;
     }
@@ -20,10 +21,16 @@ export const Virtualizer = ({
      */
 
     parentRef.current.firstElementChild?.nextElementSibling?.scrollIntoView();
+  }, [data]);
+
+  useEffect(() => {
+    if (!parentRef.current) {
+      return;
+    }
 
     const options = {
       root: parentRef.current,
-      threshold: 1.0,
+      threshold,
     };
 
     const intersectionObserver = new IntersectionObserver(
@@ -58,7 +65,7 @@ export const Virtualizer = ({
         intersectionObserver.unobserve(lastChild);
       }
     };
-  }, [onEndReached, onTopReached]);
+  }, [onEndReached, onTopReached, threshold]);
 
   return (
     <div ref={parentRef} {...restDivProps}>
