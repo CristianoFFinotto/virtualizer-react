@@ -19,7 +19,6 @@ export const Virtualizer = ({
     /**
      * scroll to the first item of the list, this makes possible to scroll up with the placeholder
      */
-
     parentRef.current.firstElementChild?.nextElementSibling?.scrollIntoView();
   }, [data]);
 
@@ -27,6 +26,8 @@ export const Virtualizer = ({
     if (!parentRef.current) {
       return;
     }
+
+  
 
     const options = {
       root: parentRef.current,

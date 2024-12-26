@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "update-packages": "yarn --latest upgrade-interactive"
@@ -18,7 +20,8 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.12",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.1.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
@@ -27,7 +30,9 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
+    "jsdom": "^25.0.1",
     "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "vite": "^5.3.1",
+    "vitest": "^2.1.8"
   }
 }
