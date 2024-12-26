@@ -11,6 +11,7 @@
     "build": "tsc -b && vite build",
     "test": "vitest",
     "test:watch": "vitest --watch",
+    "test:ci": "yarn test && yarn build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "update-packages": "yarn --latest upgrade-interactive"
